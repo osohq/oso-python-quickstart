@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "quickstart"
+version = "0.0.0"
+description = "oso Python quickstart."
+authors = ["Gabe Jackson <gj@mail.co.de>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+oso    = ">=0.5.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
