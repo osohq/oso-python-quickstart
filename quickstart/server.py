@@ -33,5 +33,12 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    print("running on port 5050")
+    try:
+        from os import environ
+
+        print(
+            f"server running at {environ['REPL_SLUG']}--{environ['REPL_OWNER']}.repl.co"
+        )
+    except KeyError:
+        print("server running at localhost:5050")
     HTTPServer(("", 5050), RequestHandler).serve_forever()
