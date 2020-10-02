@@ -1,2 +1,4 @@
 language = "python3"
 run = "poetry run python quickstart/server.py"
+onBoot = "touch expenses.polar"
+
