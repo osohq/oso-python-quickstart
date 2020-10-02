@@ -1,3 +1,2 @@
 language = "python3"
-run = "poetry run python quickstart/server.py"
-onBoot = "rm -rf tests"
+run = "rm -rf tests && poetry run python quickstart/server.py"
