@@ -31,6 +31,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         actor = self.headers.get("user", None)
         action = "GET"
+
         if oso.is_allowed(actor, action, expense):
             self._respond(expense)
         else:
@@ -38,12 +39,5 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    try:
-        from os import environ
-
-        print(
-            f"server running at {environ['REPL_SLUG']}--{environ['REPL_OWNER']}.repl.co"
-        )
-    except KeyError:
-        print("server running at localhost:5050")
+    print("server running on port 5050")
     HTTPServer(("", 5050), RequestHandler).serve_forever()

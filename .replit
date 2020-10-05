@@ -1,2 +1,0 @@
-language = "python3"
-run = "rm -rf tests && poetry run python quickstart/server.py"
