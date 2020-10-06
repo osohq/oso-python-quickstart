@@ -1,7 +1,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from oso import Oso
 
-from quickstart.expense import db, Expense
+from expense import db, Expense
 
 oso = Oso()
 oso.register_class(Expense)
