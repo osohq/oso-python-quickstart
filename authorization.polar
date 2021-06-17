@@ -7,11 +7,11 @@ actor_role(actor, role) if
 resource(_type: Page, "page", actions, roles) if
     actions = ["read", "write"] and
     roles = {
+        user: {
+            permissions: ["read"]
+        },
         admin: {
             permissions: ["write"],
             implies: ["user"]
-        },
-        user: {
-            permissions: ["read"]
         }
     };
