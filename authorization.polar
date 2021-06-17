@@ -1,10 +1,8 @@
+allow(actor, action, resource) if
+    role_allow(actor, action, resource);
 
 actor_role(actor, role) if
-    resources = Page.pages and
-    r in resources and
-    actions = r.has_roles(actor) and
-    action in actions and
-    role = { name: action, resource: r };
+    role in actor.get_roles();
 
 resource(_type: Page, "page", actions, roles) if
     actions = ["read", "write"] and
