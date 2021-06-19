@@ -8,10 +8,11 @@ app = Flask(__name__)
 
 # Setup Oso
 oso = Oso()
-oso.enable_roles()
 oso.register_class(Page)
 oso.register_class(User)
 oso.load_file("authorization.polar")
+
+oso.enable_roles()
 
 
 @app.route("/page/<pagenum>")
