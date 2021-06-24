@@ -1,5 +1,5 @@
 allow(actor, action, resource) if
-    role_allow(actor, action, resource);
+    role_allows(actor, action, resource);
 
 actor_has_role_for_resource(actor, role_name, resource) if
     role in actor.get_roles() and
