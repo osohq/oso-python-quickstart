@@ -1,2 +1,4 @@
 oso
 dataclasses
+flask
+pytest
