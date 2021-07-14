@@ -16,7 +16,7 @@ Page.pages = [Page(0), Page(1), Page(2)]
 
 ROLES = {
     "alice": [
-        {"name": "user", "resource": Page.pages[0]},
+        {"name": "guest", "resource": Page.pages[0]},
         {"name": "admin", "resource": Page.pages[1]},
     ],
     "bob": [{"name": "admin", "resource": Page.pages[2]}],
