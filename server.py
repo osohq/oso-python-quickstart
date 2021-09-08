@@ -1,43 +1,21 @@
-from http.server import HTTPServer, BaseHTTPRequestHandler
-from oso import Oso
-
-from expense import db, Expense
+from flask import Flask
+from .model import User, Repository
+from oso import Oso, NotFoundError
 
 oso = Oso()
-oso.register_class(Expense)
-oso.load_file("expenses.polar")
+oso.load_file("main.polar")
+oso.register_class(User)
+oso.register_class(Repository)
+
+app = Flask(__name__)
 
 
-class RequestHandler(BaseHTTPRequestHandler):
-    def _respond(self, msg, code=200):
-        self.send_response(code)
-        self.end_headers()
-        self.wfile.write(str(msg).encode() + b"\n")
+@app.route("/repo/<slug>")
+def repo_show(slug):
+    repo = Repository.get_repo(slug)
 
-    def do_GET(self):
-        # 404 if the requested path doesn't match /expenses/:id
-        try:
-            _, resource, id = self.path.split("/")
-            if resource != "expenses":
-                return self._respond("Not Found!", 404)
-        except ValueError:
-            return self._respond("Not Found!", 404)
-
-        # Look up the requested expense in our "database"
-        try:
-            expense = db[int(id)]
-        except KeyError:
-            return self._respond("Not Found!", 404)
-
-        actor = self.headers.get("user", None)
-        action = "GET"
-
-        if oso.is_allowed(actor, action, expense):
-            self._respond(expense)
-        else:
-            self._respond("Not Authorized!", 403)
-
-
-if __name__ == "__main__":
-    print("server running on port 5050")
-    HTTPServer(("", 5050), RequestHandler).serve_forever()
+    try:
+        oso.authorize(User.get_current_user(), "read", repo)
+        return f"<h1>A Repo</h1><p>Welcome to repo {repo.name}</p>", 200
+    except NotFoundError:
+        return f"<h1>Whoops!</h1><p>That repo was not found</p>", 404
