@@ -12,9 +12,12 @@ resource Repository {
 	"contributor" if "maintainer";
 }
 
-has_role(actor, role_name, resource) if
+has_role(actor, role_name, repository: Repository) if
   role in actor.roles and
-  role matches { name: role_name, resource: resource };
+  role matches { name: role_name, repository: repository };
+
+# has_permission(_, "read", repository: Repository) if
+#   repository.public;
 
 allow(actor, action, resource) if
   has_permission(actor, action, resource);
