@@ -37,5 +37,4 @@ users_db = {
     "larry": User([Role(name="admin", repository=repos_db["gmail"])]),
     "anne": User([Role(name="maintainer", repository=repos_db["react"])]),
     "graham": User([Role(name="contributor", repository=repos_db["oso"])]),
-    # TODO: more?
 }

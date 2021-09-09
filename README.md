@@ -17,7 +17,7 @@ should get a 200 response. If you visit
 should see a 404.
 
 Add this code to `app/main.polar`:
-```ruby
+```python
 has_permission(_, "read", repository: Repository) if
   repository.public;
 ```

@@ -15,7 +15,8 @@ resource Repository {
 # This rule tells Oso how to fetch roles for a user
 has_role(actor, role_name, repository: Repository) if
   role in actor.roles and
-  role matches { name: role_name, repository: repository };
+  role_name = role.name and
+  repository = role.repository;
 
 allow(actor, action, resource) if
   has_permission(actor, action, resource);
