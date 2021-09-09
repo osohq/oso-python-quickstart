@@ -1,8 +1,13 @@
-from flask import Flask, request, g
+from pathlib import Path
+
+from flask import Flask, request
 from oso import Oso, NotFoundError
 
-from .model import User, Repository
+from .models import User, Repository
 
+APP_DIR = Path(__file__).parent
+
+# docs: start-setup
 
 # Initialize the Oso object. This object is usually used globally throughout
 # an application.
@@ -13,8 +18,11 @@ oso = Oso()
 oso.register_class(User)
 oso.register_class(Repository)
 
+
 # Load your policy files.
-oso.load_files(["main.polar"])
+oso.load_files([APP_DIR / "main.polar"])
+
+# docs: end-setup
 
 app = Flask(__name__)
 
