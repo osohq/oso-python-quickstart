@@ -7,8 +7,8 @@ class Repository:
     name: str
 
     @classmethod
-    def get_by_id(id):
-        return repos_db.get(id)
+    def get_by_slug(cls, slug):
+        return repos_db.get(slug)
 
 
 @dataclass
@@ -16,7 +16,7 @@ class User:
     roles: List[dict]
 
     @classmethod
-    def get_current_user():
+    def get_current_user(cls):
         return users_db["larry"]
 
 

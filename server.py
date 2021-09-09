@@ -1,18 +1,18 @@
 from flask import Flask
-from .model import User, Repository
+from model import User, Repository
 from oso import Oso, NotFoundError
 
 oso = Oso()
-oso.load_file("main.polar")
 oso.register_class(User)
 oso.register_class(Repository)
+oso.load_file("main.polar")
 
 app = Flask(__name__)
 
 
 @app.route("/repo/<slug>")
 def repo_show(slug):
-    repo = Repository.get_repo(slug)
+    repo = Repository.get_by_slug(slug)
 
     try:
         oso.authorize(User.get_current_user(), "read", repo)
