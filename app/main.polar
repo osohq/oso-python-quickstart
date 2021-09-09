@@ -1,15 +1,15 @@
 actor User {}
 
 resource Repository {
-	permissions = ["read", "push", "delete"];
-	roles = ["contributor", "maintainer", "admin"];
+  permissions = ["read", "push", "delete"];
+  roles = ["contributor", "maintainer", "admin"];
 
-	"read" if "contributor";
-	"push" if "maintainer";
-	"delete" if "admin";
+  "read" if "contributor";
+  "push" if "maintainer";
+  "delete" if "admin";
 
-	"maintainer" if "admin";
-	"contributor" if "maintainer";
+  "maintainer" if "admin";
+  "contributor" if "maintainer";
 }
 
 has_role(actor, role_name, repository: Repository) if
