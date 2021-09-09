@@ -1,3 +1,5 @@
+actor User {}
+
 resource Repository {
 	permissions = ["read", "push", "delete"];
 	roles = ["contributor", "maintainer", "admin"];
@@ -9,3 +11,5 @@ resource Repository {
 	"maintainer" if "admin";
 	"contributor" if "maintainer";
 }
+
+allow(actor, action, resource) if has_permission(actor, action, resource);
