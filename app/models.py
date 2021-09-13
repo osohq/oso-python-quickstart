@@ -5,7 +5,7 @@ from typing import List
 @dataclass
 class Repository:
     name: str
-    public: bool = False
+    is_public: bool = False
 
     @staticmethod
     def get_by_name(name):
@@ -29,7 +29,7 @@ class User:
 
 repos_db = {
     "gmail": Repository("gmail"),
-    "react": Repository("react", public=True),
+    "react": Repository("react", is_public=True),
     "oso": Repository("oso"),
 }
 
