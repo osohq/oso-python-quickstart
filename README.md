@@ -1,4 +1,4 @@
-# oso Python Quickstart
+# Oso Python Quickstart
 
 Follow along [here](https://docs.osohq.com/getting-started/quickstart.html).
 
