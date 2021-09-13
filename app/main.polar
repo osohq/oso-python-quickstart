@@ -1,3 +1,6 @@
+allow(actor, action, resource) if
+  has_permission(actor, action, resource);
+
 actor User {}
 
 resource Repository {
@@ -17,6 +20,3 @@ has_role(actor, role_name, repository: Repository) if
   role in actor.roles and
   role_name = role.name and
   repository = role.repository;
-
-allow(actor, action, resource) if
-  has_permission(actor, action, resource);
