@@ -1,2 +1,4 @@
-oso
+oso>=0.20.0b0
 dataclasses
+flask
+pytest
