@@ -19,7 +19,7 @@ should see a 404.
 Add this code to `app/main.polar`:
 ```python
 has_permission(_, "read", repository: Repository) if
-  repository.public;
+  repository.is_public;
 ```
 
 Now, when you visit
