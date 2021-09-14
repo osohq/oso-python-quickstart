@@ -25,4 +25,4 @@ has_permission(_, "read", repository: Repository) if
 Now, when you visit
 [http://localhost:5000/repo/react](http://localhost:5000/repo/react), you should
 see a proper 200 response, because the `react` repository is marked as public
-in `app/model.py`.
+in `app/models.py`.
