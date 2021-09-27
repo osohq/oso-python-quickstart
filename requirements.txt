@@ -1,4 +1,4 @@
-oso>=0.20.1
+oso==0.20.1
 dataclasses
 flask
 pytest
