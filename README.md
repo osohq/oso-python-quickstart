@@ -1,8 +1,12 @@
-# Oso Python Quickstart
+# DEPRECATED
 
-Follow along [here](https://docs.osohq.com/getting-started/quickstart.html).
+We deprecated the legacy Oso open source library in December 2023. We have plans for the next open source release and we’re looking forward to getting feedback from the community leading up to that point. In the meantime, if you’re happy using the Oso open source library now, nothing needs to change – i.e., we are not end-of-lifing (EOL) the library and we’ll continue to provide support and critical bug fixes.
 
-## Instructions
+[This post](https://www.osohq.com/docs/oss/getting-started/deprecation.html) describes how we got here, what this change means for existing users, and what you can expect from Oso in the future. If you have questions, you can always reach out to us in our [community Slack](https://join-slack.osohq.com).
+
+If you’re building authorization for more than one service or want to share a policy across multiple applications, read how to get started with [Oso Cloud](https://www.osohq.com/docs).
+
+## Oso Python Quickstart Instructions
 
 1. Clone this repository.
 2. Install dependencies: `pip install -r requirements.txt`
